@@ -1,0 +1,44 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PizzeriaApp"
+        xmlns:Views="clr-namespace:PizzeriaApp.Views" x:Class="PizzeriaApp.MainWindow"
+        mc:Ignorable="d"
+        Title="{Binding TitleOfMainWindow}" Height="450" Width="800" Background="#FFD68787">
+    <Grid Grid.Column="1">
+        <WrapPanel Orientation="Vertical" Margin="0,0,0,0">
+            <Grid Background="White" Height="434" Width="296">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Ajouter_Client" Content="Ajouter client" HorizontalAlignment="Left" Margin="71,82,0,0" VerticalAlignment="Top" Width="169" Click="addClient" Height="20"/>
+                <Button x:Name="Ajouter_Commis" Content="Ajouter commis" HorizontalAlignment="Left" Margin="71,210,0,0" VerticalAlignment="Top" Width="169" Click="addCommis" Height="20"/>
+                <Button x:Name="Ajouter_Livreur" Content="Ajouter livreur" HorizontalAlignment="Left" Margin="71,328,0,0" VerticalAlignment="Top" Width="169" Click="addLivreur" Height="20"/>
+                <Button x:Name="Modifier_Client" Content="Modifier client" HorizontalAlignment="Left" Margin="71,132,0,0" VerticalAlignment="Top" Width="169" Click="handleClient" Height="20"/>
+                <Button x:Name="Modifier_Commis" Content="Modifier commis" HorizontalAlignment="Left" Margin="71,235,0,0" VerticalAlignment="Top" Width="169" Click="handleCommis" Height="20"/>
+                <Button x:Name="Modifier_Livreur" Content="Modifier livreur" HorizontalAlignment="Left" Margin="71,353,0,0" VerticalAlignment="Top" Width="169" Click="handleLivreur" Height="20"/>
+                <Button x:Name="Supprimer_Client" Content="Supprimer client" HorizontalAlignment="Left" Margin="71,107,0,0" VerticalAlignment="Top" Width="169" Click="deleteClient" Height="20"/>
+                <Button x:Name="Supprimer_Commis" Content="Supprimer commis" HorizontalAlignment="Left" Margin="71,260,0,0" VerticalAlignment="Top" Width="169" Click="deleteCommis" Height="20"/>
+                <Button x:Name="Supprimer_Livreur" Content="Supprimer livreur" HorizontalAlignment="Left" Margin="71,378,0,0" VerticalAlignment="Top" Width="169" Click="deleteLivreur" Height="20"/>
+                <Button Content="PASSER COMMANDE" HorizontalAlignment="Center" Margin="0,414,0,0" VerticalAlignment="Top"/>
+
+                <Label Content="Actions livreur" HorizontalAlignment="Left" Margin="38,297,0,0" VerticalAlignment="Top" Height="26" Width="85"/>
+                <Label Content="Actions commis" HorizontalAlignment="Left" Margin="38,179,0,0" VerticalAlignment="Top" Height="26" Width="94"/>
+                <Label Content="Actions client" HorizontalAlignment="Left" Margin="44,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.682,1.323" Height="26" Width="81"/>
+                <Label Content="ADMINISTRATEUR" HorizontalAlignment="Left" Margin="71,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Width="167" Height="34"/>
+
+            </Grid>
+        </WrapPanel>
+        <Grid Margin="288,0,0,0">
+            <Grid>
+                <Views:QuestionsByCommis HorizontalAlignment="Center" VerticalAlignment="Center" Height="434" Width="512"/>
+            </Grid>
+        </Grid>
+    </Grid>
+
+
+
+</Window>
