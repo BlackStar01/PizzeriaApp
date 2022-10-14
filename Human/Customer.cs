@@ -9,17 +9,33 @@ namespace Human
 {
     public class Customer : Person
     {
-        DateOnly FirstCommand { get; set; }
+        public DateOnly ? FirstCommand { get; set; }
+        public float TimeForThinking { get; set; }
 
+        /* Construct for older customer */
         public Customer(
             string firstname,
             string lastname,
             string address,
             string phone,
-            DateOnly firstCommand
+            DateOnly firstCommand,
+            float timeForThinking
         ) : base(firstname, lastname, address, phone)
         {
             this.FirstCommand = firstCommand;
+            this.TimeForThinking = timeForThinking;
+        }
+        /* Construct for new customer */
+        public Customer(
+            string firstname,
+            string lastname,
+            string address,
+            string phone,
+            float timeForThinking
+        ) : base(firstname, lastname, address, phone)
+        {
+            this.FirstCommand = null;
+            this.TimeForThinking = timeForThinking;
         }
 
         public string checkCommand(List<Command> listCommand, string no_commande)
@@ -37,7 +53,14 @@ namespace Human
 
         public override string ToString()
         {
-            return "Client - " + base.ToString() + " - First command the " + FirstCommand;
+            string display = "Client - " + base.ToString();
+            if(FirstCommand == null) {
+                display += " - It's a new customer ... ";
+            }
+            else {
+                display += " - First command made : " + FirstCommand;
+            }
+            return display;
         }
     }
 }

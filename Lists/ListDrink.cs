@@ -7,7 +7,7 @@ using Models.Food;
 
 namespace Models.Lists
 {
-    public class ListDrink
+    public class ListDrink : IList
     {
         public List<Drink> listDrink = new List<Drink>();
 
