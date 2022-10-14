@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Models.Food
 {
-    public abstract class Drink : Specimen
+    public class Drink : Specimen
     {
         string Name { get; set; }
 
-        public Drink(string height, float price, string name) : base(height, price)
+        public Drink(string height, float price, float duration, string name) : base(height, price, duration)
         {
             Name = name;
         }

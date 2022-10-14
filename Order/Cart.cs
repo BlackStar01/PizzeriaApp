@@ -4,33 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models.Food;
+using Models.Lists;
 
 namespace Models.Order
 {
-    public abstract class Cart
+    public class Cart
     {
-        List<Pizza>? Pizzas;
-        List<Drink>? Drinks;
+        ListPizza Pizzas;
+        ListDrink Drinks;
         float PriceCart;
         float TimeToCook;
 
+        public Cart(ListPizza pizzas, ListDrink drinks)
+        {
+            Pizzas = pizzas;
+            Drinks = drinks;
+        }
+
         public float computePrice()
         {
-            if (Pizzas != null)
-            {
-                foreach (Pizza pizza in Pizzas)
-                {
-                    PriceCart += pizza.Price;
-                }
-                if (Drinks != null)
-                {
-                    foreach (Drink drink in Drinks)
-                    {
-                        PriceCart += drink.Price;
-                    }
-                }
-            }
+            PriceCart = Pizzas.computePrice() + Drinks.computePrice();
             return PriceCart;
+        }
+        public float computeDuration()
+        {
+            TimeToCook = Pizzas.computeDuration() + Drinks.computeDuration();
+            return TimeToCook;
+        }
+
+        public override string ToString()
+        {
+            return "\n Invoice \n" + Pizzas.ToString() + Drinks.ToString() + "\n\n  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n\n Duration to cook : " + computeDuration() + " secondes \n\n Price : " + computePrice() + " € \n\n";
         }
     }
 }

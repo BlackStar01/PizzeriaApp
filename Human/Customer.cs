@@ -27,12 +27,12 @@ namespace Human
             if (listCommand != null)
             {
                 Command ? command = listCommand.Find(e => e.NoCommande == no_commande);
-                return command.NoCommande;
+                if (command != null)
+                {
+                    return command.ToString();   
+                }
             }
-            else {
-                throw new Exception(" Command not found ");
-            }
-             
+            return "No command found ...";   
         }
 
         public override string ToString()

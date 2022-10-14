@@ -11,16 +11,18 @@ namespace Models.Food
         /* In the case of drink , our drink volume is the height */
         public string Height { get; set; }
         public float Price { get; set; }
+        public float Duration { get; set; }
 
-        public Specimen(string height, float price)
+        public Specimen(string height, float price, float duration)
         {
             Height = height;
             Price = price;
+            Duration = duration;
         }
 
         public override string ToString()
         {
-            return this.Height + " " + this.Price + " € ";
+            return this.Height + " " + this.Price + " € ; Time to cook = " + Duration + " secondes ";
         }
     }
 }
