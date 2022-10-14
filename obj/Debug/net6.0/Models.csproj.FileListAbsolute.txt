@@ -1,0 +1,15 @@
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/obj/Debug/net6.0/Models.csproj.AssemblyReference.cache
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/obj/Debug/net6.0/Models.GeneratedMSBuildEditorConfig.editorconfig
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/obj/Debug/net6.0/Models.AssemblyInfoInputs.cache
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/obj/Debug/net6.0/Models.AssemblyInfo.cs
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/obj/Debug/net6.0/Models.csproj.CoreCompileInputs.cache
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/bin/Debug/net6.0/Models
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/bin/Debug/net6.0/Models.deps.json
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/bin/Debug/net6.0/Models.runtimeconfig.json
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/bin/Debug/net6.0/Models.dll
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/bin/Debug/net6.0/ref/Models.dll
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/bin/Debug/net6.0/Models.pdb
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/obj/Debug/net6.0/Models.dll
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/obj/Debug/net6.0/ref/Models.dll
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/obj/Debug/net6.0/Models.pdb
+/home/warren/Documents/EFREI_SEMESTER_7/Intégration-systèmes-app/Projet/Models/obj/Debug/net6.0/Models.genruntimeconfig.cache
