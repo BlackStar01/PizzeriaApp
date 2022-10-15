@@ -14,21 +14,19 @@ namespace Models.Cooking
 
         public async Task<Command> cook(Command command)
         {
-            Console.WriteLine("\n Start cook command of : " + command.PhoneCustomer + " ... Delay -> " + command.CartOrder.computeDuration());
-            Console.WriteLine("Started cooking");
-            await Task.Delay(6000);
-
+            Console.WriteLine("\n Start cook command of : " + command.PhoneCustomer + " ... Time for cooking -> " + (command.CartOrder.computeDuration())/1000 + " seconds");
+            await Task.Delay((int)command.CartOrder.computeDuration());
+            command.State = "En preparation ... ";
             return command;
         }
 
-        public async Task<Command> finish(Command command)
+        /* public async Task<Command> finish(Command command)
         {
-            command.State = "Finish";
             await Task.Delay(1000);
-            Console.WriteLine("Start put command in bag...");
+            Console.WriteLine("Start put command " +  command.NoCommande + " in bag...");
             await Task.Delay(3000);
 
             return command;
-        }
+        } */
     }
 }

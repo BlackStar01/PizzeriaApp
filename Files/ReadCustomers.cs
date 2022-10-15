@@ -13,14 +13,15 @@ namespace Models.Files
         public string path = "./Files/customers.csv";
         public List<Customer> listCustomers = new List<Customer>();
         
-        public void readFile() {
+        public List<Customer> readFile() {
             string[] lines = System.IO.File.ReadAllLines(path);
             foreach(string line in lines)
             {
                 string[] columns = line.Split(',');
-                Customer c = new Customer(columns[0], columns[1], columns[2], columns[3], new DateOnly(Int32.Parse(columns[4].Split('-')[0]), Int32.Parse(columns[4].Split('-')[1]), Int32.Parse(columns[4].Split('-')[2])) ,float.Parse(columns[5]));
+                Customer c = new Customer(columns[0], columns[1], columns[2], columns[3], new DateOnly(Int32.Parse(columns[4].Split('-')[0]), Int32.Parse(columns[4].Split('-')[1]), Int32.Parse(columns[4].Split('-')[2])));
                  listCustomers.Add(c);
             }
+            return listCustomers;
         }
 
         public override string ToString()

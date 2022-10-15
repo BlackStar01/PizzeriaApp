@@ -15,6 +15,14 @@ namespace Models.Lists
             listCommand.Add(command);
         }
 
+        public Command get(int index) {   
+            return listCommand[index];
+        }
+
+        public int nbrElements() {   
+            return listCommand.Count;
+        }
+
         public override string ToString()
         {
             string displayList = "\n  - - - - - - - - - - -  List of commands  - - - - - - - - - - -   \n\n";

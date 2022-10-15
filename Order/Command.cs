@@ -20,7 +20,7 @@ namespace Models.Order
         public Command(
             Cart cart,
             string noCommande,
-            string phoneCustomer,
+            string ? phoneCustomer,
             string nameCommis,
             string nameLivreur,
             DateOnly date

@@ -10,7 +10,6 @@ namespace Human
     public class Customer : Person
     {
         public DateOnly ? FirstCommand { get; set; }
-        public float TimeForThinking { get; set; }
 
         /* Construct for older customer */
         public Customer(
@@ -18,24 +17,20 @@ namespace Human
             string lastname,
             string address,
             string phone,
-            DateOnly firstCommand,
-            float timeForThinking
+            DateOnly firstCommand
         ) : base(firstname, lastname, address, phone)
         {
             this.FirstCommand = firstCommand;
-            this.TimeForThinking = timeForThinking;
         }
         /* Construct for new customer */
         public Customer(
             string firstname,
             string lastname,
             string address,
-            string phone,
-            float timeForThinking
+            string phone
         ) : base(firstname, lastname, address, phone)
         {
             this.FirstCommand = null;
-            this.TimeForThinking = timeForThinking;
         }
 
         public string checkCommand(List<Command> listCommand, string no_commande)
