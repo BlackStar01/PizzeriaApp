@@ -5,19 +5,101 @@ using Models.Food;
 using Models.Lists;
 using Models.Order;
 using Models.Cooking;
-using Models.Files;
+using Models.Display;
 using System.Threading.Tasks;
 
 namespace Models
 {
     public class Program
     {
-        
         static async Task Main(string[] args)
         {
-            List<Customer> ? listCustomers = new List<Customer>();
-            ReadCustomer reader = new ReadCustomer();
-            listCustomers = reader.readFile();
+            Console.WriteLine(" 1 - Parcours individuel ");
+            Console.WriteLine(" 2 - Charger un fichier command ");
+            string? res = Console.ReadLine();
+
+            Kitchen kitchen = new Kitchen();
+
+            switch (Int32.Parse(res))
+            {
+                case 1:
+                    Menu menu = new Menu();
+                    Customer myCustomer = menu.checkOlder();
+
+                    Command command = new Command(
+                        new Cart(menu.selectPizza(), menu.selectDrink(myCustomer.Phone)),
+                        "MORNING 7-5",
+                        myCustomer.Phone,
+                        "Patrick",
+                        "Lucas",
+                        DateOnly.FromDateTime(DateTime.Now)
+                    );
+
+                    Console.WriteLine(command.ToString());
+
+                    var myTask = new List<Task>
+                    {
+                        kitchen.cook(command),
+                    };
+                    while (myTask.Count > 0)
+                    {
+                        if (myTask.Count == 0)
+                        {
+                            break;
+                        }
+                        Task finishedTask = await Task.WhenAny(myTask);
+                        if (finishedTask == myTask[0])
+                        {
+                            Console.WriteLine("\nCommand is ready to be deliver .... ");
+                        }
+                        
+                        myTask.Remove(finishedTask);
+                    }
+                    break;
+                case 2:
+                    ListCommand commands = new ListCommand();
+                    ListCommand listCommand = commands.createListCommand();
+
+                    var TaskForCooking = new List<Task>
+                    {
+                        kitchen.cook(listCommand.get(0)),
+                        kitchen.cook(listCommand.get(1))
+                    };
+                    int i = 2;
+                    while (TaskForCooking.Count > 0)
+                    {
+                        ineligible:
+
+                        if (TaskForCooking.Count == 0)
+                        {
+                            break;
+                        }
+                        Task finishedTask = await Task.WhenAny(TaskForCooking);
+                        if (finishedTask == TaskForCooking[0])
+                        {
+                            Console.WriteLine("\nCommand 1 is ready to be deliver .... ");
+                        }
+                        else if (finishedTask == TaskForCooking[1])
+                        {
+                            Console.WriteLine("\nCommand 2 is ready to be deliver .... ");
+                        }
+
+                        TaskForCooking.Remove(finishedTask);
+                        if (i == listCommand.nbrElements())
+                        {
+                            goto ineligible;
+                        }
+                        else if (i > listCommand.nbrElements())
+                        {
+                            break;
+                        }
+                        TaskForCooking.Add(kitchen.cook(listCommand.get(i)));
+                        i++;
+                    }
+                    break;
+                default:
+                    break;
+            }
 
             /* Customer customer1 = new Customer(
                 "Vital",
@@ -37,7 +119,7 @@ namespace Models
             Console.WriteLine(customer1.ToString());
             Console.WriteLine(customer2.ToString()); */
 
-            Pizza pizza1 = new Pizza("Grande", 12, 1000, "vegetariennes");
+            /* Pizza pizza1 = new Pizza("Grande", 12, 1000, "vegetariennes");
             Pizza pizza2 = new Pizza("Grande", 20, 2500, "Tomate");
             Pizza pizza3 = new Pizza("Petite", 10, 2000, "04 Fromages");
 
@@ -60,15 +142,15 @@ namespace Models
             listP2.add(p2);
             ListDrink listD2 = new ListDrink();
             listD2.add(d1);
-/*  */
+
             Pizza pp = new Pizza("Petite", 12, 3000, "Jambon");
             Pizza ppp = new Pizza("Grande", 20, 7500, "ROYALE");
 
-            Drink dd = new Drink("Grande", 12, 1000, "Jus de papaye");
+            Drink dd = new Drink("Grande", 12, 3000, "Jus de papaye");
 
             ListPizza listPP = new ListPizza();
             listPP.add(pp);
-            listPP.add(pp);
+            listPP.add(ppp);
             ListDrink listDD = new ListDrink();
             listDD.add(dd);
 
@@ -92,7 +174,7 @@ namespace Models
 
              Command command3 = new Command(
                 new Cart(listPP, listDD),
-                "MORNING 7-5",
+                "MORNING 77-5",
                 listCustomers[3].Phone,
                 "Patrick",
                 "Lucas",
@@ -107,29 +189,37 @@ namespace Models
             listCommand.add(command3);
 
             var TaskForCooking = new List<Task> { kitchen.cook(listCommand.get(0)), kitchen.cook(listCommand.get(1)) };
-            int i = 0;
+            int i = 2;
             while (TaskForCooking.Count > 0)
             {
+                ineligible:
+
+                if(TaskForCooking.Count == 0) {
+                    break;
+                }
                 Task finishedTask = await Task.WhenAny(TaskForCooking);
-                i++;
-                if (finishedTask == TaskForCooking[0]  )
+                if (finishedTask == TaskForCooking[0])
                 {
-                    Console.WriteLine("Command 1 is ready to be deliver .... ");
+                    Console.WriteLine("\nCommand 1 is ready to be deliver .... ");
                 }
                 else if (finishedTask == TaskForCooking[1])
                 {
-                    Console.WriteLine("Command 2 is ready to be deliver .... ");
+                    Console.WriteLine("\nCommand 2 is ready to be deliver .... ");
                 }
-                TaskForCooking.Add(kitchen.cook(listCommand.get(i-1)));
+
                 TaskForCooking.Remove(finishedTask);
                 if (i == listCommand.nbrElements())
                 {
+                    goto ineligible;
+                }
+                else if (i > listCommand.nbrElements()) {
                     break;
                 }
-                Console.WriteLine(i + "-----");
-            }
+                TaskForCooking.Add(kitchen.cook(listCommand.get(i)));
+                i++;
+            } */
 
-            /* Console.WriteLine(command.ToString()); */
+            /* Console.WriteLine(listCommand.ToString()); */
         }
     }
 }

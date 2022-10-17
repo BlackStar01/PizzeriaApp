@@ -19,14 +19,5 @@ namespace Models.Cooking
             command.State = "En preparation ... ";
             return command;
         }
-
-        /* public async Task<Command> finish(Command command)
-        {
-            await Task.Delay(1000);
-            Console.WriteLine("Start put command " +  command.NoCommande + " in bag...");
-            await Task.Delay(3000);
-
-            return command;
-        } */
     }
 }

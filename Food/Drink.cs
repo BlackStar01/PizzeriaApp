@@ -12,6 +12,7 @@ namespace Models.Food
 
         public Drink(string height, float price, float duration, string name) : base(height, price, duration)
         {
+            price = 10;
             Name = name;
         }
 
